@@ -1,90 +1,70 @@
-# PDF Text Extraction and Translation Website
+# Sitio Web de Extracción y Traducción de Texto de PDF
 
-A React-based application that allows users to upload PDF files, extract text content, and translate it from English to Spanish using i18next.
+Una aplicación basada en React que permite a los usuarios cargar archivos PDF, extraer el contenido de texto y traducirlo del inglés al español utilizando i18next.
 
-## Project Overview
+## Descripción del Proyecto
 
-This project demonstrates the capabilities of AI-assisted development using Cline to build a functional website with the following features:
-- PDF file upload functionality
-- Text extraction from the uploaded PDF
-- Translation of the extracted text between English and Spanish
+Este proyecto demuestra las capacidades del desarrollo asistido por IA utilizando Cline para construir un sitio web funcional con las siguientes características:
+- Funcionalidad de carga de archivos PDF
+- Extracción de texto del PDF cargado
+- Traducción del texto extraído entre inglés y español
 
-## Table of Contents
+## Tabla de Contenidos
 
-1. [Prerequisites](#prerequisites)
-2. [Installation](#installation)
-3. [Cline Configuration](#cline-configuration)
-4. [Plan vs. Act Mode](#plan-vs-act-mode)
-5. [Development Workflow](#development-workflow)
-6. [Project Implementation](#project-implementation)
-7. [Running the Application](#running-the-application)
+1. [Requisitos Previos](#requisitos-previos)
+2. [Instalación](#instalación)
+3. [Configuración de Cline](#configuración-de-cline)
+4. [Modo Plan vs. Act](#modo-plan-vs-act)
+5. [Flujo de Trabajo de Desarrollo](#flujo-de-trabajo-de-desarrollo)
+6. [Implementación del Proyecto](#implementación-del-proyecto)
+7. [Ejecución de la Aplicación](#ejecución-de-la-aplicación)
 
-## Prerequisites
+## Requisitos Previos
 
-Before starting, ensure you have the following tools installed:
+Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas:
 
-- [Node.js](https://nodejs.org/) (14.0.0 or later)
-- [npm](https://www.npmjs.com/) (6.14.0 or later)
+- [Node.js](https://nodejs.org/) (14.0.0 o posterior)
+- [npm](https://www.npmjs.com/) (6.14.0 o posterior)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Cline Extension for VS Code](https://cline.bot/)
+- [Extensión Cline para VS Code](https://cline.bot/)
 
-## Installation
+## Instalación
 
-1. Install Visual Studio Code if you haven't already:
-   - Download from [https://code.visualstudio.com/](https://code.visualstudio.com/)
-   - Follow the installation instructions for your operating system
+1. Instala Visual Studio Code si aún no lo tienes:
+   - Descárgalo desde [https://code.visualstudio.com/](https://code.visualstudio.com/)
+   - Sigue las instrucciones de instalación para tu sistema operativo
 
-2. Install the Cline Extension:
-   - Open VS Code
-   - Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)
-   - Search for "Cline"
-   - Click "Install"
-   - Follow the setup instructions to authenticate the extension
+2. Instala la Extensión Cline:
+   - Abre VS Code
+   - Ve a Extensiones (Ctrl+Shift+X o Cmd+Shift+X)
+   - Busca "Cline"
+   - Haz clic en "Instalar"
+   - Sigue las instrucciones de configuración para autenticar la extensión
 
-3. Additional VS Code Extensions (Optional but Recommended):
+3. Extensiones Adicionales para VS Code (Opcionales pero Recomendadas):
    - ESLint
    - Prettier
    - React Developer Tools
 
-## Interface de Cline
+## Interfaz de Cline
 
-## Plan vs. Act Mode
+## Modo Plan vs. Act
 
-According to [Cline's official documentation](https://docs.cline.bot/exploring-clines-tools/plan-and-act-modes-a-guide-to-effective-ai-development), Cline provides two distinct operational modes that are optimized for different stages of the development process:
+Cline ofrece dos modos para diferentes etapas del desarrollo:
 
-### Plan Mode
+### Modo Plan
 
-Plan Mode is designed for the conceptual and architectural phases of development. In this mode, Cline focuses on helping you:
+En este modo, Cline te ayuda a planificar la arquitectura, estructura de componentes y flujo de datos, además de analizar requisitos y resolver dudas antes de escribir código.
 
-- Brainstorm project architecture and system design
-- Plan component structure and data flow
-- Make high-level decisions about libraries, frameworks, and approaches
-- Understand complex concepts through detailed explanations
-- Analyze requirements and identify potential challenges
+### Modo Act
 
-Plan Mode is conversational by nature, allowing you to engage in back-and-forth discussions to refine your ideas before committing to code.
+Este modo se enfoca en la implementación. Cline ejecuta acciones, genera código, implementa características, depura errores y organiza archivos en tu proyecto.
 
-**Recommended Model for Plan Mode**: Reasoning/Thinking Models
-- Excellent reasoning and planning capabilities
-- Strong at explaining complex concepts
-- Efficient for architectural discussions
-- Good at identifying potential issues early in development
+> Es buena práctica no habilitar auto-approvals a operaciones que modifiquen archivos o accedan recursos externos.
 
-### Act Mode
+### Carpeta `.clinerules/`
 
-Act Mode transitions from planning to execution. As described in the Cline documentation, this mode enables Cline to:
-
-- Write and generate actual code
-- Implement features based on the plan
-- Execute commands in your development environment
-- Debug issues and fix bugs
-- Create, modify, and organize files in your project
-
-In Act Mode, Cline can use tools like file operations, command execution, and browser interaction to help implement your application.
-
-### `.clinerules/` Folder
-
-According to the [Cline documentation on prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting), effective `.clinerules` files should provide clear context and goals. Following these guidelines, create a `.clinerules` folder in your project root with content like:
+De acuerdo con la [documentación de Cline sobre prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting), los archivos `.clinerules` efectivos deben proporcionar un contexto y objetivos claros. Siguiendo estas pautas, crea una carpeta `.clinerules` en la raíz de tu proyecto con contenido como:
 
 ```
 ai-assisted-build-a-website/
@@ -94,86 +74,69 @@ ai-assisted-build-a-website/
 
 00-role.md
 ```
-You are an experienced Javascript / React developer with expertise in building web applications with file upload capabilities and PDF processing.
+Eres un desarrollador experimentado en Javascript / React con experiencia en la construcción de aplicaciones web con capacidades de carga de archivos y procesamiento de PDF.
 
-If provided with a GitHub URL, use the github MCP server to fetch the content.
+Si se proporciona una URL de GitHub, utiliza el servidor MCP de GitHub para obtener el contenido.
 ```
 
-**Recommended Model for Act Mode**: Models Good at Coding (e.g., Claude Sonnet 3.7)
-- Superior code generation capabilities
-- Strong at implementing complex logic
-- Excellent at debugging and problem-solving
-- Efficient at translating requirements into working code
+**Modelo Recomendado para el Modo Act**: Modelos Buenos para Codificación (por ejemplo, Claude Sonnet 3.7)
+- Capacidades superiores de generación de código
+- Fuertes en la implementación de lógica compleja
+- Excelentes para depuración y resolución de problemas
+- Eficientes en la traducción de requisitos a código funcional
 
-### Model Selection Resources
+### Recursos para Selección de Modelos
 
-- [LLM Leaderboard (artificialanalysis.ai)](https://artificialanalysis.ai/) - This resource provides up-to-date comparisons of various language models across different tasks, helping you choose the most appropriate model for your specific needs. The leaderboard evaluates models on reasoning, coding, and other capabilities relevant to software development.
+- [LLM Leaderboard (artificialanalysis.ai)](https://artificialanalysis.ai/) - Este recurso proporciona comparaciones actualizadas de varios modelos de lenguaje en diferentes tareas, ayudándote a elegir el modelo más adecuado para tus necesidades específicas. El leaderboard evalúa modelos en razonamiento, codificación y otras capacidades relevantes para el desarrollo de software.
 
-- [OpenRouter](https://openrouter.ai/) - OpenRouter simplifies access to multiple AI models through a single API key. Instead of managing separate accounts and API keys for different model providers, OpenRouter allows you to access a wide range of models with a unified interface. To use this service:
-  1. Create an account on OpenRouter
-  2. Generate an API key with credits
-  3. Configure Cline to use your OpenRouter credentials
-  4. Access any supported model through the same interface
+- [OpenRouter](https://openrouter.ai/) - OpenRouter simplifica el acceso a múltiples modelos de IA a través de una única clave API. En lugar de gestionar cuentas y claves API separadas para diferentes proveedores de modelos, OpenRouter te permite acceder a una amplia gama de modelos con una interfaz unificada. Para usar este servicio:
+  1. Crea una cuenta en OpenRouter
+  2. Genera una clave API con créditos
+  3. Configura Cline para usar tus credenciales de OpenRouter
+  4. Accede a cualquier modelo compatible a través de la misma interfaz
 
-## Development Workflow
+## Flujo de Trabajo de Desarrollo
 
-### 1. Initial Planning (Plan Mode)
+### 1. Planificación Inicial (Modo Plan)
 
-Start in Plan Mode with a simple prompt that describes your goals. Here's a detailed example:
+Comienza en el Modo Plan con un prompt simple que describa tus objetivos. Aquí tienes un ejemplo detallado:
 
 ```
-Create a user-friendly react web site for uploading PDF files that extract text content from uploaded PDFs and displays it in the UI
+Crea un sitio web amigable en React para cargar archivos PDF que extraiga el contenido de texto de los PDFs cargados y lo muestre en la interfaz de usuario.
 ```
 
-Discuss and refine the approach with Cline by asking clarifying questions until you're satisfied with the plan.
+Discute y refina el enfoque con Cline haciendo preguntas aclaratorias hasta que estés satisfecho con el plan.
 
-### When to Switch to Act Mode
+### Cuándo Cambiar de Plan a Act
 
-Based on [Cline's official guidance](https://docs.cline.bot/exploring-clines-tools/plan-and-act-modes-a-guide-to-effective-ai-development), you should switch from Plan Mode to Act Mode when:
+Cambia al Modo Act cuando estés de acuerdo con el Plan generado. Es decir que sea claro el diseño, hayas tomado las decisiones técnicas importantes y estés listo para implementar el código.
 
-1. You have a clear understanding of the solution architecture
-2. All major technical decisions have been made
-3. Potential challenges and edge cases have been identified
-4. You're ready to start writing actual code
+### 2. Configuración del Proyecto (Modo Act)
 
-The transition should happen at the point where you shift from "what and why" to "how and when" - from design thinking to implementation.
+Cuando cambies al Modo Act, Cline va a iniciar la ejecucción del plan, incluyendo acciones como:
+1. Configure un nuevo proyecto React
+2. Instale las dependencias necesarias
+3. Cree la estructura básica del proyecto
 
-To switch to Act Mode, click "Act".
+### 3. Implementación (Modo Act)
 
-2. Use the Act/Plan toggle button in the Cline interface (typically found at the bottom of the chat window) to manually switch modes.
+Continúa en el Modo Act para implementar:
+1. Componente de carga de PDF
+2. Funcionalidad de extracción de texto
+3. Configuración de traducción con una biblioteca simple de Node
 
-3. Select an appropriate model for code generation (recommended: `claude-3.7-sonnet`)
+### 4. Pruebas y Refinamiento (Modo Act)
 
-Once in Act Mode, Cline will be ready to help you with the actual implementation of your project, using tools to create files, execute commands, and test your application.
+Usa Cline para ayudar a:
+1. Depurar cualquier problema: Pide a Cline que pruebe la aplicación en un navegador para identificar y solucionar errores
 
-> Be careful of not auto-approving actions that can give the agent too much freedom to be harmful.
+## Ejecución de la Aplicación
 
-### 2. Project Setup (Act Mode)
+Una vez que la aplicación esté lista, sigue estos pasos para ejecutarla:
 
-Switch to Act Mode and ask Cline to:
-1. Set up a new React project with Vite
-2. Install necessary dependencies
-3. Create the basic project structure
-
-### 3. Implementation (Act Mode)
-
-Continue in Act Mode to implement:
-1. PDF upload component
-2. Text extraction functionality
-3. Translation setup with a simple node library
-
-### 4. Testing and Refinement (Act Mode)
-
-Use Cline to help:
-1. Debug any issues: Ask Cline to test the application on a browser to identify and recover from errors
-
-## Running the Application
-
-Once the application is ready, follow these steps to run it:
-
-1. Start the development server:
+1. Inicia el servidor de desarrollo:
    ```
-   cd [app_folder] && npm run dev
+   cd [carpeta_de_la_aplicación] && npm run dev
    ```
 
-2. Open your browser and navigate to the URL displayed in the terminal (typically http://localhost:5173)
+2. Abre tu navegador y navega a la URL mostrada en la terminal (generalmente http://localhost:5173)
