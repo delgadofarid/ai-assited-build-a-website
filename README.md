@@ -72,7 +72,7 @@ ai-assisted-build-a-website/
     ├── 00-role.md       # Cline Agent - role
 ```
 
-00-role.md
+.clinerules/role.md
 ```
 Eres un desarrollador experimentado en Javascript / React con experiencia en la construcción de aplicaciones web con capacidades de carga de archivos y procesamiento de PDF.
 
