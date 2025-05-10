@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.clinerules
+!.clinerules/*
+!README.md
