@@ -8,7 +8,6 @@ This project demonstrates the capabilities of AI-assisted development using Clin
 - PDF file upload functionality
 - Text extraction from the uploaded PDF
 - Translation of the extracted text between English and Spanish
-- Clean, responsive UI
 
 ## Table of Contents
 
@@ -47,97 +46,7 @@ Before starting, ensure you have the following tools installed:
    - Prettier
    - React Developer Tools
 
-## Cline Configuration
-
-According to the [Cline documentation on prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting), effective `.clinerules` files should provide clear context and goals. Following these guidelines, create a `.clinerules` folder in your project root with content like:
-
-```
-ai-assisted-build-a-website/
-└── .clinerules/
-    ├── 00-role.md       # Cline Agent - role
-    └── 01-project.md    # Cline Agent - project requirements
-```
-
-00-role.md
-```
-Role: You are an experienced React developer with expertise in building web applications with file upload capabilities, PDF processing, and internationalization.
-
-Goals:
-1. Create a user-friendly interface for uploading PDF files
-2. Extract text content from uploaded PDFs
-3. Implement translation functionality using i18next
-4. Ensure responsive design and good user experience
-```
-
-01-project.md
-```
-Technical Requirements:
-- React (version 18+)
-- PDF.js for PDF text extraction
-- i18next and react-i18next for translation (requires React hooks support)
-- Vite for build tooling
-
-Project Structure:
-ai-assisted-build-a-website/
-├── public/
-│   ├── locales/           # Translation files
-│   │   ├── en/
-│   │   └── es/
-├── src/
-│   ├── components/
-│   │   ├── FileUpload.jsx
-│   │   ├── TextDisplay.jsx
-│   │   ├── TranslationPanel.jsx
-│   ├── services/
-│   │   ├── pdfService.js  # PDF extraction logic
-│   │   ├── i18n.js        # i18next configuration
-│   ├── App.jsx
-│   ├── main.jsx
-├── .clinerules             # Cline agent rules
-├── package.json
-└── README.md
-
-Important Context:
-- The application should be intuitive for non-technical users
-- PDF extraction should handle documents of various sizes and complexity
-- Translation should maintain formatting and paragraph structure
-- The UI should provide clear feedback during processing steps
-
-Implementation Details:
-1. PDF Upload:
-   - Support for drag-and-drop functionality
-   - Clear indication of upload status and progress
-   - File type validation to ensure only PDFs are accepted
-
-2. Text Extraction:
-   - Use PDF.js to parse PDF content
-   - Handle multi-page PDFs appropriately
-   - Display extracted text in a readable format
-   - Show loading indicator during extraction process
-
-3. Translation:
-   - Configure i18next with English and Spanish language support
-   - Implement language switching functionality
-   - Translate both UI elements and extracted PDF text
-   - Maintain text formatting during translation when possible
-
-4. User Interface:
-   - Clean, modern design with responsive layout
-   - Accessible design following WCAG guidelines
-   - Clear visual feedback for all user actions
-   - Error handling with user-friendly messages
-
-Best Practices:
-- Use React hooks for state management
-- Implement proper error handling
-- Follow component-based architecture
-- Ensure responsive design for mobile compatibility
-- Write semantic HTML
-- Use CSS modules for component styling
-
-```
-
-These cline rules help Cline understand the project requirements, technology stack, and desired structure, enabling it to provide more accurate and relevant assistance.
+## Interface de Cline
 
 ## Plan vs. Act Mode
 
@@ -173,6 +82,23 @@ Act Mode transitions from planning to execution. As described in the Cline docum
 
 In Act Mode, Cline can use tools like file operations, command execution, and browser interaction to help implement your application.
 
+### `.clinerules/` Folder
+
+According to the [Cline documentation on prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting), effective `.clinerules` files should provide clear context and goals. Following these guidelines, create a `.clinerules` folder in your project root with content like:
+
+```
+ai-assisted-build-a-website/
+└── .clinerules/
+    ├── 00-role.md       # Cline Agent - role
+```
+
+00-role.md
+```
+You are an experienced Javascript / React developer with expertise in building web applications with file upload capabilities and PDF processing.
+
+If provided with a GitHub URL, use the github MCP server to fetch the content.
+```
+
 **Recommended Model for Act Mode**: Models Good at Coding (e.g., Claude Sonnet 3.7)
 - Superior code generation capabilities
 - Strong at implementing complex logic
@@ -196,7 +122,7 @@ In Act Mode, Cline can use tools like file operations, command execution, and br
 Start in Plan Mode with a simple prompt that describes your goals. Here's a detailed example:
 
 ```
-I want to build a React application that allows users to upload PDF files, extract the text content, and translate it between English and Spanish
+Create a user-friendly react web site for uploading PDF files that extract text content from uploaded PDFs and displays it in the UI
 ```
 
 Discuss and refine the approach with Cline by asking clarifying questions until you're satisfied with the plan.
@@ -206,12 +132,7 @@ Discuss and refine the approach with Cline by asking clarifying questions until 
 Based on [Cline's official guidance](https://docs.cline.bot/exploring-clines-tools/plan-and-act-modes-a-guide-to-effective-ai-development), you should switch from Plan Mode to Act Mode when:
 
 1. You have a clear understanding of the solution architecture
-2. All major technical decisions have been made:
-   - Component structure is defined
-   - State management approach is selected
-   - File upload handling strategy is determined
-   - PDF processing implementation approach is decided
-   - Translation system structure is designed
+2. All major technical decisions have been made
 3. Potential challenges and edge cases have been identified
 4. You're ready to start writing actual code
 
@@ -225,6 +146,8 @@ To switch to Act Mode, click "Act".
 
 Once in Act Mode, Cline will be ready to help you with the actual implementation of your project, using tools to create files, execute commands, and test your application.
 
+> Be careful of not auto-approving actions that can give the agent too much freedom to be harmful.
+
 ### 2. Project Setup (Act Mode)
 
 Switch to Act Mode and ask Cline to:
@@ -237,46 +160,12 @@ Switch to Act Mode and ask Cline to:
 Continue in Act Mode to implement:
 1. PDF upload component
 2. Text extraction functionality
-3. Translation setup with i18next
-4. UI components and styling
+3. Translation setup with a simple node library
 
 ### 4. Testing and Refinement (Act Mode)
 
 Use Cline to help:
-1. Test the application
-2. Debug any issues
-3. Refine the user interface
-4. Optimize performance
-
-## Project Implementation
-
-### PDF Upload and Text Extraction
-
-We'll use PDF.js to extract text from uploaded PDF files:
-
-1. Handle file uploads using a standard form input
-2. Process the uploaded file with PDF.js
-3. Extract text content from each page
-4. Display the extracted text to the user
-
-### Translation with i18next
-
-We'll implement translation using i18next and react-i18next:
-
-1. Configure i18next with English and Spanish language resources
-2. Create translation files for UI elements
-3. Use translation hooks for the interface
-4. Implement translation of the extracted PDF text
-
-### User Interface
-
-The interface will include:
-
-1. A clean, modern design with responsive layout
-2. Drag-and-drop area for PDF uploads
-3. Text display area for showing extracted content
-4. Language toggle for switching between English and Spanish
-5. Clear indication of processing status
+1. Debug any issues: Ask Cline to test the application on a browser to identify and recover from errors
 
 ## Running the Application
 
@@ -284,7 +173,7 @@ Once the application is ready, follow these steps to run it:
 
 1. Start the development server:
    ```
-   npm run dev
+   cd [app_folder] && npm run dev
    ```
 
 2. Open your browser and navigate to the URL displayed in the terminal (typically http://localhost:5173)
